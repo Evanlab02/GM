@@ -2,7 +2,21 @@
 
 import os
 
+# Files
+SLUG_FILE = "slug.json"
+
+# Directories
 ROOT_DIR = os.path.expanduser("~")
 STORAGE_DIR = ".el02gm"
+BACKUP_DIR = ".gm/backup"
+
+# Full Installation Paths
 FULL_STORAGE_DIR = os.path.join(ROOT_DIR, STORAGE_DIR)
-SLUG_FILE = os.path.join(FULL_STORAGE_DIR, "slug.json")
+FULL_SLUG_FILE = os.path.join(FULL_STORAGE_DIR, SLUG_FILE)
+
+# Full Backup Paths
+FULL_BACKUP_DIR = os.path.join(ROOT_DIR, BACKUP_DIR)
+BACKUP_SLUG_FILE = os.path.join(FULL_BACKUP_DIR, SLUG_FILE)
+
+# Path map
+PATH_MAP = {FULL_SLUG_FILE: BACKUP_SLUG_FILE}

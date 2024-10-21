@@ -9,6 +9,7 @@ uninstall:
 
 debug:
 	cat ~/.el02gm/slug.json
+	cat ~/.gm/backup/slug.json
 
 run:
 	uv run gm

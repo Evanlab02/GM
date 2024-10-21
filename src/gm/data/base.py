@@ -7,7 +7,7 @@ import sys
 from rich import print as rprint
 
 from gm.constants import SLUGS
-from gm.constants.data import FULL_STORAGE_DIR, SLUG_FILE
+from gm.constants.data import FULL_STORAGE_DIR, FULL_SLUG_FILE
 from gm.logs.common import generic_error
 
 
@@ -41,11 +41,11 @@ def get_current_slugs() -> dict[str, str]:
     Returns:
         Slugs (dict[str, str]): The currently installed slugs.
     """
-    if not os.path.exists(SLUG_FILE):
+    if not os.path.exists(FULL_SLUG_FILE):
         return {}
 
     try:
-        with open(SLUG_FILE, "r+", encoding="UTF-8") as file:
+        with open(FULL_SLUG_FILE, "r+", encoding="UTF-8") as file:
             return json.load(file)  # type: ignore
     except FileNotFoundError:
         generic_error(code=5)
@@ -69,7 +69,7 @@ def create_slug_file() -> bool:
 
     rprint("Installing/updating slug file...")
     try:
-        with open(SLUG_FILE, "w+", encoding="UTF-8") as file:
+        with open(FULL_SLUG_FILE, "w+", encoding="UTF-8") as file:
             json.dump(SLUGS, file, indent=4)
     except FileNotFoundError:
         generic_error(code=3)
