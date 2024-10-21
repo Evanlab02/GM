@@ -1,0 +1,19 @@
+[project]
+name = "gm"
+version = "0.1.0"
+description = "Game master, a tool that helps you keep track of your alt playthroughs in your favorite video games."
+readme = "README.md"
+authors = [
+    { name = "Evanlab02", email = "evanlabuschagne70@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "typer==0.12.5",
+]
+
+[project.scripts]
+gm = "gm.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
