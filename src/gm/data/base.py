@@ -1,4 +1,4 @@
-"""TODO"""
+"""TODO."""
 
 import json
 import os
@@ -6,9 +6,9 @@ import sys
 
 from rich import print as rprint
 
-from gm.logs.common import generic_error
 from gm.constants import SLUGS
 from gm.constants.data import FULL_STORAGE_DIR, SLUG_FILE
+from gm.logs.common import generic_error
 
 
 def create_storage_folder() -> bool:
@@ -46,7 +46,7 @@ def get_current_slugs() -> dict[str, str]:
 
     try:
         with open(SLUG_FILE, "r+", encoding="UTF-8") as file:
-            return json.load(file)
+            return json.load(file)  # type: ignore
     except FileNotFoundError:
         generic_error(code=5)
     except json.JSONDecodeError:

@@ -1,6 +1,6 @@
-"""TODO"""
+"""TODO."""
 
-from gm.data.base import create_storage_folder, create_slug_file
+from gm.data.base import create_slug_file, create_storage_folder
 
 
 def init() -> bool:
