@@ -7,7 +7,7 @@ import sys
 from rich import print as rprint
 
 from gm.constants import SLUGS
-from gm.constants.data import FULL_STORAGE_DIR, FULL_SLUG_FILE
+from gm.constants.data import FULL_SLUG_FILE, FULL_STORAGE_DIR
 from gm.logs.common import generic_error
 
 

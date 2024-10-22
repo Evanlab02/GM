@@ -1,7 +1,7 @@
 """TODO."""
 
-import os
 import json
+import os
 
 from rich import print as rprint
 

@@ -27,7 +27,6 @@ class BackupService(IBackupService):
 
         self.repo.create_backup_storage()
         for current, backup in PATH_MAP.items():
-            rprint(f"[bold cyan][PROCESSING][/bold cyan] {current}")
             result = self.repo.load(current, backup)
             if result == 0:
                 success += 1
@@ -53,7 +52,6 @@ class BackupService(IBackupService):
         failed = 0
 
         for current, backup in PATH_MAP.items():
-            rprint(f"[bold cyan][PROCESSING][/bold cyan] {backup}")
             result = self.repo.load(backup, current)
             if result == 0:
                 success += 1

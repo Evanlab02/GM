@@ -4,7 +4,7 @@ import sys
 
 from rich.console import Console
 from rich.table import Table
-from typer import Typer, Option
+from typer import Option, Typer
 from typing_extensions import Annotated
 
 from gm.cli.backup import cli as backup_cli

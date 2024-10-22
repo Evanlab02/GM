@@ -2,6 +2,10 @@
 
 import os
 
+from rich import print as rprint
+
+from gm.constants import SLUGS
+
 # Files
 SLUG_FILE = "slug.json"
 
@@ -20,3 +24,14 @@ BACKUP_SLUG_FILE = os.path.join(FULL_BACKUP_DIR, SLUG_FILE)
 
 # Path map
 PATH_MAP = {FULL_SLUG_FILE: BACKUP_SLUG_FILE}
+
+for key, value in SLUGS.items():
+    file = value.get("file")
+    if not file:
+        rprint("[bold red][ERROR][/bold red] Failed to process a slug. (-1)")
+        continue
+
+    full_file = os.path.join(FULL_STORAGE_DIR, file)
+    full_backup_file = os.path.join(BACKUP_SLUG_FILE, file)
+
+    PATH_MAP[full_file] = full_backup_file
