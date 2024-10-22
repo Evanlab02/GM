@@ -26,8 +26,9 @@ def slugs(
     table = Table(show_header=True, header_style="bold")
     table.add_column("Slug", style="cyan")
     table.add_column("Name")
+    table.add_column("File")
     for key, value in slugs.items():
-        table.add_row(key, value)
+        table.add_row(key, value.get("name"), value.get("file"))
     console.print(table)
 
 

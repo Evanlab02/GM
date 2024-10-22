@@ -34,12 +34,12 @@ def create_storage_folder() -> bool:
     return True
 
 
-def get_current_slugs() -> dict[str, str]:
+def get_current_slugs() -> dict[str, dict[str, str]]:
     """
     Get the currently installed slugs.
 
     Returns:
-        Slugs (dict[str, str]): The currently installed slugs.
+        Slugs (dict[str, dict[str, str]]): The currently installed slugs.
     """
     if not os.path.exists(FULL_SLUG_FILE):
         return {}
