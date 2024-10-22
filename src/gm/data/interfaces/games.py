@@ -7,10 +7,18 @@ class IGamesRepository(ABC):
     """TODO."""
 
     @abstractmethod
-    def install(self, slug: str) -> bool:
+    def install(self, slug: str, data: dict) -> None:  # type: ignore
+        """Create the game file, if it does not exist."""
+
+    @abstractmethod
+    def save(self, slug: str, data: dict) -> None:  # type: ignore
+        """Save to the game file."""
+
+    @abstractmethod
+    def load(self, slug: str) -> dict:  # type: ignore
         """
-        Create the storage folder for the application if it does not exist.
+        Load the game file, if it exists.
 
         Returns:
-            Result (bool): The result of creating the storage folder, returns true if no errors.
+            Result (dict): The data from the file.
         """

@@ -8,6 +8,9 @@ uninstall:
 	rm -rf ~/.el02gm
 	rm -rf ~/el02gm
 
+full-uninstall: uninstall
+	rm -rf ~/.gm/backup
+
 debug:
 	cat ~/.el02gm/slug.json
 	cat ~/.gm/backup/slug.json

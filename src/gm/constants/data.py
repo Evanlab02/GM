@@ -32,6 +32,6 @@ for key, value in SLUGS.items():
         continue
 
     full_file = os.path.join(FULL_STORAGE_DIR, file)
-    full_backup_file = os.path.join(BACKUP_SLUG_FILE, file)
+    full_backup_file = os.path.join(FULL_BACKUP_DIR, file)
 
     PATH_MAP[full_file] = full_backup_file
