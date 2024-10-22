@@ -2,13 +2,33 @@
 
 import sys
 
-from typer import Typer
+from rich.console import Console
+from rich.table import Table
+from typer import Typer, Option
+from typing_extensions import Annotated
 
 from gm.cli.backup import cli as backup_cli
+from gm.constants import SLUGS
 from gm.data import init
+from gm.data.base import get_current_slugs
 
+console = Console()
 cli = Typer(no_args_is_help=True)
 cli.add_typer(backup_cli, name="backup")
+
+
+@cli.command()
+def slugs(
+    current: Annotated[bool, Option(help="Display currently installed slugs.")] = False,
+) -> None:
+    """Display all slugs."""
+    slugs = get_current_slugs() if current else SLUGS
+    table = Table(show_header=True, header_style="bold")
+    table.add_column("Slug", style="cyan")
+    table.add_column("Name")
+    for key, value in slugs.items():
+        table.add_row(key, value)
+    console.print(table)
 
 
 def main() -> int:
