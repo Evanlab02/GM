@@ -1,3 +1,3 @@
 """TODO."""
 
-SLUGS = {"ER": "Elden Ring", "DSR": "Dark Souls"}
+SLUGS = {"MW3": "Call of Duty Modern Warfare 3", "DSR": "Dark Souls"}

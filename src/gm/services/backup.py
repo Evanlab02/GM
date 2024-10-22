@@ -14,22 +14,55 @@ class BackupService(IBackupService):
         """TODO."""
         self.repo = repo
 
-    def backup(self) -> tuple[int, int]:
+    def backup(self) -> tuple[int, int, int]:
         """
         Backup all app files.
 
         Returns:
-            Result (tuple[int, int]): The number of successful and failed backups.
+            Result (tuple[int, int, int]): The number of successful, skipped and failed backups.
         """
+        success = 0
+        skipped = 0
+        failed = 0
+
         self.repo.create_backup_storage()
         for current, backup in PATH_MAP.items():
             rprint(f"[bold cyan][PROCESSING][/bold cyan] {current}")
-            result = self.repo.backup(current, backup)
+            result = self.repo.load(current, backup)
             if result == 0:
+                success += 1
                 rprint(f"[bold green][DONE][/bold green] {backup}")
             elif result == 1:
+                skipped += 1
                 rprint(f"[bold yellow][SKIPPED][/bold yellow] {backup}")
             else:
+                failed += 1
                 rprint(f"[bold red][ERROR][/bold red] {backup}")
 
-        return 0, 0
+        return success, skipped, failed
+
+    def load(self) -> tuple[int, int, int]:
+        """
+        Load all app files from backup to primary storage.
+
+        Returns:
+            Result (tuple[int, int, int]): The number of successful, skipped and failed imports.
+        """
+        success = 0
+        skipped = 0
+        failed = 0
+
+        for current, backup in PATH_MAP.items():
+            rprint(f"[bold cyan][PROCESSING][/bold cyan] {backup}")
+            result = self.repo.load(backup, current)
+            if result == 0:
+                success += 1
+                rprint(f"[bold green][DONE][/bold green] {current}")
+            elif result == 1:
+                skipped += 1
+                rprint(f"[bold yellow][SKIPPED][/bold yellow] {current}")
+            else:
+                failed += 1
+                rprint(f"[bold red][ERROR][/bold red] {current}")
+
+        return success, skipped, failed

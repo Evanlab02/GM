@@ -60,3 +60,29 @@ class BackupRepository(IBackupRepository):
             return 2
 
         return 0
+
+    def load(self, backup: str, original: str) -> int:
+        """
+        Load file to the primary storage.
+
+        Args:
+            backup (str): Backup file path.
+            new (str): The primary storage file path.
+
+        Returns:
+            Result (int): The result of the import.
+        """
+        if not os.path.exists(backup):
+            return 1
+
+        try:
+            with open(backup, "r", encoding="UTF-8") as file:
+                data = json.load(file)
+
+            with open(original, "w+", encoding="UTF-8") as file:
+                json.dump(data, file, indent=4)
+        except Exception as e:
+            rprint(e)
+            return 2
+
+        return 0

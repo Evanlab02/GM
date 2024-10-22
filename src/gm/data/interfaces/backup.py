@@ -27,3 +27,16 @@ class IBackupRepository(ABC):
         Returns:
             Result (bool): The result of the backup.
         """
+
+    @abstractmethod
+    def load(self, backup: str, original: str) -> int:
+        """
+        Load file to the primary storage.
+
+        Args:
+            backup (str): Backup file path.
+            new (str): The primary storage file path.
+
+        Returns:
+            Result (int): The result of the import.
+        """

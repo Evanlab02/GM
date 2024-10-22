@@ -2,6 +2,7 @@
 
 clean:
 	rm -rf src/gm/__pycache__/
+	rm -rf dist
 
 uninstall:
 	rm -rf ~/.el02gm
