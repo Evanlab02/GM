@@ -8,7 +8,7 @@ from typer import Option, Typer
 from typing_extensions import Annotated
 
 from gm.cli.backup import cli as backup_cli
-from gm.cli.mw3 import cli as mw3_cli
+from gm.cli.MW3 import cli as mw3_cli
 from gm.constants import SLUGS
 from gm.data import init
 from gm.data.base import get_current_slugs
